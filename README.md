@@ -17,9 +17,14 @@
 - `npm i -g lerna`
 - `npm run bootstrap`
 
-## Projets
+## Raccourcis commandes
 
-> Regarder les readme dans les sous projets
+- Lancer la bdd : `docker-compose  --project-directory ./packages/back/ up -d mongo`
+- `npm run dev` (Lance les deux projes, front et back)
+
+> [ATTENTION] Lancer bien les containers nécéssaires au fonctionnement de votre back
+> ici avec la commande : `docker-compose --project-directory ./packages/back/ up -d mongo`
+> Si redis est utilisé : `docker-compose --project-directory ./packages/back/ up -d redis`
 
 1. [Back](packages/back/)
 

@@ -5,6 +5,12 @@ export interface QueryReturn {
   status: number;
 }
 
+/**
+ * Helper function to chain the status definition to the data fetched
+ *
+ * @param {ExpressRequest} res Request object
+ * @param {object} queryReturn Status and data to use in request
+ */
 export function jsonWithStatus(
   res: ExpressResponse,
   { status, data }: QueryReturn

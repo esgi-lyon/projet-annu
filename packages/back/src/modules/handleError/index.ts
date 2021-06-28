@@ -7,6 +7,14 @@ const getStatusFromError = (error: Error): number =>
   errorMap.get(Object.getPrototypeOf(error.constructor).name) ??
   500;
 
+/**
+ * Handle an error in function of his class name
+ * Check map in errorMap.ts to add more errors cases
+ *
+ * @param error
+ * @param request
+ * @param response
+ */
 const handleError = (
   error: Error,
   request: FailedRequest,

@@ -11,6 +11,11 @@ let services = [];
 
 const middlewares = [ServerErrorMiddlewareProvider];
 
+/**
+ * Lazy service are loaded after express server start
+ *
+ * @param {object} lazyServices
+ */
 export default async (lazyServices = {}) => {
   // Combine lazy and base services
   services = [
