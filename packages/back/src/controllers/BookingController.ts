@@ -6,7 +6,6 @@ import {
   Query,
   Put,
   Patch,
-  Post,
   Delete,
   Body,
 } from "@decorators/express";
