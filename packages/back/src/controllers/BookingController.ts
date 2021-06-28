@@ -58,14 +58,6 @@ export default class BookingController implements CRLUD {
     jsonWithStatus(res, await this.crudService.update({ _id }, body));
   }
 
-  @Post("/")
-  async batchCreate(
-    @Body() body: BookingDocument | BookingDocument[],
-    @Response() res: ExpressResponse
-  ): Promise<void> {
-    jsonWithStatus(res, await this.crudService.create(body));
-  }
-
   @Delete("/:_id")
   async delete(
     @Query() query: FilterQuery<BookingDocument>,

@@ -4,6 +4,7 @@
         "dbaeumer.vscode-eslint",
         "drknoxy.eslint-disable-snippets",
         "visualstudioexptteam.vscodeintellicode",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "jcbuisson.vue"
     ]
 }
