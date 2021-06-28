@@ -34,8 +34,6 @@ jobs:
                   restore-keys: |
                     ${{ runner.os }}-node-
 
-            - run: npm i
-
             - name: semver plugins
               run: |
                 npm install '@semantic-release/changelog' \
@@ -45,6 +43,6 @@ jobs:
                     '@semantic-release/release-notes-generator' \
                     "@qiwi/multi-semantic-release"
 
-            - run: multi-semantic-release
+            - run: npm run multi-semantic-release
               env:
                   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

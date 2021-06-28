@@ -2,7 +2,14 @@
 
 > Projet annuel sciences u : Plateforme de formation
 
+## Install
+
+- `npm i -g lerna`
+- `npm run bootstrap`
+
 ## Projets
+
+> Regarder les readme dans les sous projets
 
 1. [Back](packages/back/)
 
