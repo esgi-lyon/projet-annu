@@ -23,6 +23,7 @@ const RoomSchema: Schema<RoomDocument, RoomBaseModel> = new Schema<
     ref: "Hotel",
     required: true,
     validate: {
+      // eslint-disable-next-line @typescript-eslint/return-await
       async validator(_id: number, _: any) {
         return await HotelModel.exists({ _id });
       },

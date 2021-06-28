@@ -6,4 +6,7 @@
 
 Full production : `docker-compose up -d`
 
-Only database in dev : `docker-compose up -d mongo`
+## Dev
+
+- Standalone database in dev : `docker-compose up -d mongo`
+- `yarn dev` (nodemon)
