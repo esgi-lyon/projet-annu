@@ -10,7 +10,7 @@
 - [MCD](https://excalidraw.com/#room=5dbc1a6afa3847a2d702,gJ_FV9rbrkXtNkonjfPaDA )
 - [Maquettes (TODO adobe xd)](https://github.com/esgi-lyon/projet-annu#)
 - [Kanban](https://github.com/esgi-lyon/projet-annu/projects/1)
-- [Collections postman]()
+- [Collections postman](/doc/Node.postman_collection.json)
 
 ## Install
 
@@ -33,7 +33,7 @@
 - Linter : eslint
 - Tests : jest
 
-### 3. Git
+### Git
 
 ### Git flow
 
@@ -106,3 +106,12 @@ git rebase -i HEAD~2
 git cherry-pick <hash-commit>
 
 ```
+
+## Installation des collections postman
+
+- `Ctrl O` ou `File > Import`
+- Prendre la tab `Folder` puis cliquer sur `Choose folder from your computer`
+- Sélectionner le dossier doc de ce projet `doc/`
+- Importer la collection
+
+Lorsque vous changer quelque chose dans la collection, maintenant vous pourez transmettre aux autres vos modifications.
