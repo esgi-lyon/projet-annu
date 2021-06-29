@@ -1,16 +1,19 @@
 {
   "name": "front",
   "version": "0.0.0",
-  "license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
     "serve": "vite preview",
-    "test": "echo 'not yet implemented'",
-    "lint": "eslint ."
+    "build": "vite build",
+    "lint": "eslint .",
+    "dev": "vite",
+    "test": "echo 'not yet implemented'"
   },
   "dependencies": {
-    "vue": "^3.0.5"
+    "@mdi/font": "5.9.55",
+    "roboto-fontface": "*",
+    "v-calendar": "^3.0.0-alpha.5",
+    "vue": "^3.0.5",
+    "vuetify": "^3.0.0-alpha.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.2.3",
@@ -20,7 +23,10 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-vue": "^7.12.1",
     "prettier": "^2.3.2",
+    "sass": "~1.32.0",
+    "sass-loader": "^10.0.0",
     "vite": "^2.3.8",
     "vue-router": "^4.0.10"
-  }
+  },
+  "license": "MIT"
 }
