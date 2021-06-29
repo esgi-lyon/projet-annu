@@ -3,7 +3,7 @@ name: Bump version and release
 on:
     push:
         branches:
-            - master
+            - main
             - beta
             - next
             - next-major
@@ -36,13 +36,13 @@ jobs:
 
             - name: semver plugins
               run: |
-                npm install '@semantic-release/changelog' \
+                npm i '@semantic-release/changelog' \
                     '@semantic-release/exec' \
                     '@semantic-release/commit-analyzer' \
                     '@semantic-release/github' \
-                    '@semantic-release/release-notes-generator' \
-                    "@qiwi/multi-semantic-release"
-
-            - run: npm run multi-semantic-release
+                    '@semantic-release/release-notes-generator'
+                sudo npm i -g "@qiwi/multi-semantic-release"
+                  
+            - run: multi-semantic-release
               env:
                   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
