@@ -12,7 +12,7 @@ RUN npm install
 COPY . /app
 
 # Fix service error
-RUN node node_modules/esbuild/install.js
+RUN node node_modules/esbuild/install.js || true
 
 RUN npm run build
 

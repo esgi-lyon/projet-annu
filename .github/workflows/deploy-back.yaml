@@ -41,7 +41,7 @@ jobs:
             git clone git@github.com:${{ github.repository }}.git || true
             cd ${{ github.event.repository.name }}
             git pull origin ${GITHUB_BRANCH##*/} --rebase
+            source /usr/local/lib/docker/virtualenv/bin/activate
             docker-compose \
               -f ./packages/back/docker-compose.yml \
               up -d
-
