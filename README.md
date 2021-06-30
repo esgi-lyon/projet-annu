@@ -2,6 +2,7 @@
 
 ![Build and run tests](https://github.com/esgi-lyon/projet-annu/workflows/Build%20and%20run%20tests/badge.svg)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![Front status](https://api.netlify.com/api/v1/badges/f251d907-2751-49cc-a9ba-bb8ad0a9eeef/deploy-status)](https://app.netlify.com/sites/projet-annu-front/deploys)
 
 > Projet annuel sciences u : Plateforme de formation
 
