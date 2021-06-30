@@ -6,7 +6,7 @@ import path from "path";
 import fs from "fs";
 
 const { LOG_DIR } = {
-  LOG_DIR: `${process.env.INIT_CWD}/logs`,
+  LOG_DIR: path.resolve("logs"),
   ...process.env,
 };
 

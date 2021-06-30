@@ -2,13 +2,15 @@
 
 ## deploy
 
-`docker-compose build`
-
-Full production : `docker-compose up -d`
+- `make build`
+- Full production : `make full`
 
 ## Dev
 
-- Standalone database in dev : `docker-compose up -d mongo`
+- Standalone database in dev :
+```bash
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d mongo
+```
 - `yarn dev` (nodemon)
 
 ## Dépendances

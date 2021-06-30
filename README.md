@@ -19,12 +19,14 @@
 
 ## Raccourcis commandes
 
-- Lancer la bdd : `docker-compose  --project-directory ./packages/back/ up -d mongo`
-- `npm run dev` (Lance les deux projes, front et back)
+- Lancer la bdd :
 
-> [ATTENTION] Lancer bien les containers nécéssaires au fonctionnement de votre back
-> ici avec la commande : `docker-compose --project-directory ./packages/back/ up -d mongo`
-> Si redis est utilisé : `docker-compose --project-directory ./packages/back/ up -d redis`
+```bash
+docker-compose -f packages/back/docker-compose.yml \
+ -f packages/back/docker-compose.dev.yml up -d mongo
+```
+
+- `npm run dev` (Lance les deux projes, front et back)
 
 1. [Back](packages/back/)
 

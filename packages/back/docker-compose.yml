@@ -3,15 +3,18 @@ services:
   app:
     container_name: app
     restart: unless-stopped
+    env_file: .env
     build: .
     ports:
-      - "80:8080"
+      - "80:8082"
     environment:
       - MONGO_USERNAME=$MONGO_USERNAME
       - MONGO_PASSWORD=$MONGO_PASSWORD
-      - MONGO_HOSTNAME=db
+      - MONGO_HOSTNAME=mongo
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB
+      - OPENID_CLIENT_ID=$OPENID_CLIENT_ID
+      - OPENID_CLIENT_SECRET=$OPENID_CLIENT_SECRET
     volumes:
       - .:/app
       - node_modules:/app/node_modules
@@ -27,12 +30,11 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
     volumes:
       - ./dbdata:/data/db
-    ports:
-      - "27017:27017"
     networks:
       - app-network
 
   # redis:
+  #   container_name: redis
   #   image: 'redis:alpine'
   #   networks:
   #     - app-network
