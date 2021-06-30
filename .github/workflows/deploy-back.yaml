@@ -1,0 +1,45 @@
+# Deploy CI
+# =============
+# This file is aimed at deploy project over ssh
+# Production stack should be simple docker
+# Project should :
+#  - be a node project with package.json
+#  - contain script prod to deploy
+# Vm should have following tools :
+#  - docker
+#  - docker-compose
+
+name: Deploy
+
+on:
+  workflow_run:
+    workflows: ['Tests']
+    branches: [ main ]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    if: >
+      contains(github.event.head_commit.message, '[skip-release]') == false
+      && contains(github.event.pull_request.labels.*.name, 'skip-release') == false
+    env:
+      CI: true
+    steps:
+      - uses: actions/checkout@v2
+      - name: Push and build to server
+        uses: appleboy/ssh-action@master
+        env:
+          GITHUB_BRANCH: ${{ github.ref }}
+        with:
+          envs: GITHUB_BRANCH
+          host: ${{ secrets.SSH_ADDRESS }}
+          username: ${{ secrets.USER_DEPLOY }}
+          key: ${{ secrets.SSH_AUTH_KEY }}
+          script: |
+            git clone git@github.com:${{ github.repository }}.git || true
+            cd ${{ github.event.repository.name }}
+            git pull origin ${GITHUB_BRANCH##*/} --rebase
+            docker-compose --project-directory ./packages/back up -d     
+
