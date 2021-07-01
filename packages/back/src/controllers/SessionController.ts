@@ -19,7 +19,7 @@ import { FilterQuery } from "mongoose";
 import { TokenProtectedMiddleware } from "../modules/oauth/middlewares/PassportMiddleware";
 
 @Injectable()
-@Controller("/courses/sessions", [TokenProtectedMiddleware])
+@Controller("/sessions", [TokenProtectedMiddleware])
 export default class SessionController implements CRLUD {
   private readonly crudService: CrudService = new CrudService(SessionModel);
 
@@ -40,11 +40,12 @@ export default class SessionController implements CRLUD {
     jsonWithStatus(res, await this.crudService.create(body));
   }
 
-  @Get("/")
+  @Get("")
   async list(
     @Query() query: FilterQuery<SessionDocument>,
     @Response() res: ExpressResponse
   ): Promise<void> {
+    console.log(query);
     await this.read(query ?? {}, res, undefined);
   }
 
