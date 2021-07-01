@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { Document, Schema, Model, model } from "mongoose";
 import SessionModel from "./Session";
+import PoolModel from "./Pool";
+import CertificationModel from "./Certification";
 
 const CourseSchema: Schema<CourseDocument, CourseBaseModel> = new Schema<
   CourseDocument,
@@ -22,10 +24,8 @@ const CourseSchema: Schema<CourseDocument, CourseBaseModel> = new Schema<
 
 interface Course {
   name: string;
-  supply: string[];
-  address: String;
-  rate: Number;
-  coordinates: Object;
+  desc: String;
+  tags: string[];
 }
 
 export interface CourseDocument extends Course, Document {}
@@ -36,6 +36,8 @@ CourseSchema.post(
   "remove",
   async function ({ _id: course }, next: Function): Promise<void> {
     await SessionModel.findOneAndDelete({ course });
+    await PoolModel.findOneAndDelete({ course });
+    await CertificationModel.findOneAndDelete({ course });
     return next();
   }
 );

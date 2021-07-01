@@ -59,6 +59,25 @@ export class CrudService {
     return { data, status: this.updateStatus(data, 200) };
   }
 
+  public async readWithPopulate(
+    query: FilterQuery<Document>,
+    primaryQuery: FilterQuery<Document> = {},
+    toPopulate: string = ""
+  ): Promise<QueryReturn> {
+    if (toPopulate === "") return await this.read(query, primaryQuery);
+    const finalQuery = !isEmpty(primaryQuery) ? primaryQuery : query;
+    let data: DataIn[] = [];
+    this.Model.find(finalQuery)
+      .populate(toPopulate) // <==
+      .exec(function (err, document) {
+        data = document;
+        console.log(data);
+        if (err != null) throw err;
+      });
+
+    return { data, status: this.readStatus(data, 200) };
+  }
+
   protected readStatus(
     data: DataIn[],
     statusOk = 200,

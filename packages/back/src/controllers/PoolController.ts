@@ -19,7 +19,7 @@ import { FilterQuery } from "mongoose";
 import { TokenProtectedMiddleware } from "../modules/oauth/middlewares/PassportMiddleware";
 
 @Injectable()
-@Controller("/courses/pools", [TokenProtectedMiddleware])
+@Controller("/pools", [TokenProtectedMiddleware])
 export default class PoolController implements CRLUD {
   private readonly crudService: CrudService = new CrudService(PoolModel);
 
@@ -29,6 +29,7 @@ export default class PoolController implements CRLUD {
     @Response() res: ExpressResponse,
     @Params("_id") _id: string | undefined
   ): Promise<void> {
+    // Populate student list
     jsonWithStatus(res, await this.crudService.read(query, { _id }));
   }
 

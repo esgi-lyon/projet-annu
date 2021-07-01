@@ -1,24 +1,16 @@
 import { Document, Model, model, Schema } from "mongoose";
-// import { RoomDocument } from "./Room";
 
 // Schema
 const UserSchema: Schema<UserDocument, UserModel> = new Schema<
   UserDocument,
   UserModel
 >({
-  login: {
+  email: {
     type: String,
     required: true,
+    unique: true,
   },
   password: {
-    type: String,
-    required: true,
-  },
-  adress: {
-    type: String,
-    required: true,
-  },
-  city: {
     type: String,
     required: true,
   },
@@ -38,10 +30,8 @@ const UserSchema: Schema<UserDocument, UserModel> = new Schema<
 });
 
 interface User {
-  login: string;
+  email: string;
   password: string;
-  adress: string;
-  city: string;
   firstName: string;
   lastName: string;
   role: string;
@@ -49,13 +39,10 @@ interface User {
 
 export interface UserDocument extends User, Document {
   fullName: string;
-  // currentRoom?: RoomDocument["_id"];
 }
 
 // For model
-export interface UserModel extends Model<UserDocument> {
-  // findRoom: (id: string) => Promise<RoomDocument>;
-}
+export interface UserModel extends Model<UserDocument> {}
 
 // Virtuals
 UserSchema.virtual("fullName").get(function (this: UserDocument) {
