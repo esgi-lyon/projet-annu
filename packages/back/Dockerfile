@@ -5,11 +5,11 @@ ENV PORT=80
 
 WORKDIR /app
 
-COPY package*.json /app
+COPY package*.json .
 
 RUN npm install
 
-COPY . /app
+COPY . .
 
 # Fix service error
 RUN node node_modules/esbuild/install.js || true

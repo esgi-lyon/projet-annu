@@ -1,24 +1,16 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/" class="navbar-brand">Home</router-link>
-      <ul>
-        <li>
-          <router-link to="/list">Liste</router-link>
-        </li>
-        <li>
-          <router-link to="/add">Add</router-link>
-        </li>
-      </ul>
-    </nav>
-
-    <div class="container">
-      <router-view />
-    </div>
-  </div>
+  <v-app>
+    <v-main>
+      <NavBar/>
+      <v-container>
+        <router-view></router-view>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script setup>
+import NavBar from './components/NavBar.vue'
 
 </script>
 
