@@ -10,7 +10,7 @@ import {
   Body,
 } from "@decorators/express";
 import { Response as ExpressResponse } from "express";
-import HotelModel, { HotelDocument } from "../models/Hotel";
+import HotelModel, { CourseDocument } from "../models/Course";
 import { CRLUD } from "../modules/mongodb/types";
 import { CrudService } from "../modules/mongodb";
 import { Injectable } from "@decorators/di";
@@ -19,13 +19,13 @@ import { FilterQuery } from "mongoose";
 import { TokenProtectedMiddleware } from "../modules/oauth/middlewares/PassportMiddleware";
 
 @Injectable()
-@Controller("/hotels", [TokenProtectedMiddleware])
+@Controller("/courses", [TokenProtectedMiddleware])
 export default class HotelController implements CRLUD {
   private readonly crudService: CrudService = new CrudService(HotelModel);
 
   @Get("/:name")
   async read(
-    @Query() query: FilterQuery<HotelDocument>,
+    @Query() query: FilterQuery<CourseDocument>,
     @Response() res: ExpressResponse,
     @Params("name") name: string | undefined
   ): Promise<void> {
@@ -34,7 +34,7 @@ export default class HotelController implements CRLUD {
 
   @Put("/")
   async create(
-    @Body() body: HotelDocument | HotelDocument[],
+    @Body() body: CourseDocument | CourseDocument[],
     @Response() res: ExpressResponse
   ): Promise<void> {
     jsonWithStatus(res, await this.crudService.create(body));
@@ -42,7 +42,7 @@ export default class HotelController implements CRLUD {
 
   @Get("/")
   async list(
-    @Query() query: FilterQuery<HotelDocument>,
+    @Query() query: FilterQuery<CourseDocument>,
     @Response() res: ExpressResponse
   ): Promise<void> {
     await this.read(query ?? {}, res, undefined);
@@ -50,7 +50,7 @@ export default class HotelController implements CRLUD {
 
   @Patch("/:_id")
   async update(
-    @Body() body: HotelDocument,
+    @Body() body: CourseDocument,
     @Response() res: ExpressResponse,
     @Params("_id") _id: string
   ): Promise<void> {
@@ -59,7 +59,7 @@ export default class HotelController implements CRLUD {
 
   @Delete("/")
   async delete(
-    @Query() query: FilterQuery<HotelDocument>,
+    @Query() query: FilterQuery<CourseDocument>,
     @Response() res: ExpressResponse,
     @Params("_id") _id: string
   ): Promise<void> {

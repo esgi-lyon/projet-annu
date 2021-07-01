@@ -1,5 +1,6 @@
 {
     "recommendations": [
+        "EditorConfig.EditorConfig",
         "wscats.vue",
         "dbaeumer.vscode-eslint",
         "drknoxy.eslint-disable-snippets",

@@ -10,7 +10,7 @@ import {
   Body,
 } from "@decorators/express";
 import { Response as ExpressResponse } from "express";
-import RoomModel, { RoomDocument } from "../models/Room";
+import RoomModel, { SessionDocument } from "../models/Session";
 import { CRLUD } from "../modules/mongodb/types";
 import { CrudService } from "../modules/mongodb";
 import { Injectable } from "@decorators/di";
@@ -19,13 +19,13 @@ import { FilterQuery } from "mongoose";
 import { TokenProtectedMiddleware } from "../modules/oauth/middlewares/PassportMiddleware";
 
 @Injectable()
-@Controller("/rooms", [TokenProtectedMiddleware])
+@Controller("/courses/sessions", [TokenProtectedMiddleware])
 export default class RoomController implements CRLUD {
   private readonly crudService: CrudService = new CrudService(RoomModel);
 
   @Get("/:_id")
   async read(
-    @Query() query: FilterQuery<RoomDocument>,
+    @Query() query: FilterQuery<SessionDocument>,
     @Response() res: ExpressResponse,
     @Params("_id") _id: string | undefined
   ): Promise<void> {
@@ -34,7 +34,7 @@ export default class RoomController implements CRLUD {
 
   @Put("/")
   async create(
-    @Body() body: RoomDocument | RoomDocument[],
+    @Body() body: SessionDocument | SessionDocument[],
     @Response() res: ExpressResponse
   ): Promise<void> {
     jsonWithStatus(res, await this.crudService.create(body));
@@ -42,7 +42,7 @@ export default class RoomController implements CRLUD {
 
   @Get("/")
   async list(
-    @Query() query: FilterQuery<RoomDocument>,
+    @Query() query: FilterQuery<SessionDocument>,
     @Response() res: ExpressResponse
   ): Promise<void> {
     await this.read(query ?? {}, res, undefined);
@@ -50,7 +50,7 @@ export default class RoomController implements CRLUD {
 
   @Patch("/:_id")
   async update(
-    @Body() body: RoomDocument,
+    @Body() body: SessionDocument,
     @Response() res: ExpressResponse,
     @Params("_id") _id: string
   ): Promise<void> {
@@ -59,7 +59,7 @@ export default class RoomController implements CRLUD {
 
   @Delete("/:_id")
   async delete(
-    @Query() query: FilterQuery<RoomDocument>,
+    @Query() query: FilterQuery<SessionDocument>,
     @Response() res: ExpressResponse,
     @Params("_id") _id: string
   ): Promise<void> {

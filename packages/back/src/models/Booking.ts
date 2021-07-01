@@ -1,5 +1,5 @@
 import { Document, Schema, Model, model } from "mongoose";
-import RoomModel, { RoomDocument, RoomBaseModel } from "./Room";
+import RoomModel, { SessionDocument, SessionBaseModel } from "./Session";
 import moment from "moment";
 
 const bookingSchema: Schema<BookingDocument, BookingBaseModel> = new Schema<
@@ -34,7 +34,7 @@ const bookingSchema: Schema<BookingDocument, BookingBaseModel> = new Schema<
 });
 
 interface Booking {
-  room: RoomBaseModel[];
+  room: SessionBaseModel[];
   dateArrival: string;
   dateDeparture: string;
   price: number;
@@ -62,7 +62,7 @@ bookingSchema.pre("save", async function (next): Promise<void> {
 });
 
 export interface BookingDocument extends Booking, Document {
-  rooms: [RoomDocument["_id"]];
+  rooms: [SessionDocument["_id"]];
 }
 
 export interface BookingBaseModel extends Model<BookingDocument> {}

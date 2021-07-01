@@ -19,8 +19,11 @@
 
 ## Install
 
+- `git config --global core.autocrlf false`
+- **Windows** : `npm config set script-shell "C:\\Program Files\\git\\bin\\bash.exe"`
 - `npm i -g lerna`
 - `npm run bootstrap`
+- Pour kill nodemon sur **Windows** : `taskkill /IM node.exe /F`
 
 ## Raccourcis commandes
 
