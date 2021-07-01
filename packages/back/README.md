@@ -1,5 +1,33 @@
 # node-tp
 
+> [MCD](https://excalidraw.com/#room=5dbc1a6afa3847a2d702,gJ_FV9rbrkXtNkonjfPaDA )
+
+## Route map
+
+- **/courses**
+  - `DELETE` delete
+  - `PUT` create
+  - `PATCH` update
+  - `GET` list
+  - `GET` **?_id=id** read
+
+- **/courses/sessions**
+  - CRUD comme précédent
+
+- **/courses/certification**
+  - CRUD (max 1)
+
+- **/users**
+  - CRUD comme précédent
+  - param supplémentaire : `role` (Coach, Manager, Teacher, Student, SuperAdmin)
+
+- **/users/student-pools** (pool d'élève => mapping coach / liste élèves)
+  - `DELETE` delete
+  - `PUT` create
+  - `PATCH` update
+  - `GET` list
+  - `GET` **?_id=id** read
+
 ## deploy
 
 - `make build`

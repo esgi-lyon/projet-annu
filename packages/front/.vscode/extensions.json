@@ -1,10 +1,9 @@
 {
     "recommendations": [
-        "hollowtree.vue-snippets",
+        "wscats.vue",
         "dbaeumer.vscode-eslint",
         "drknoxy.eslint-disable-snippets",
         "visualstudioexptteam.vscodeintellicode",
-        "esbenp.prettier-vscode",
-        "jcbuisson.vue"
+        "esbenp.prettier-vscode"
     ]
 }
