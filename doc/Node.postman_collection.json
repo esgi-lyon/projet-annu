@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "60cab4ce-1fae-42b4-a0e9-da0f02fb58c5",
+		"_postman_id": "bf1a7ea9-0a54-4964-bcd7-0f67fc189ea0",
 		"name": "Node projet annu",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"pandemik69\",\n    \"firstName\": \"toto\",\n    \"lastName\": \"Roux\"\n}",
+							"raw": "{\n    \"login\": \"test\",\n    \"firstName\": \"firstnameTest\",\n    \"lastName\": \"lastnameTest\",\n    \"password\": \"password\",\n    \"adress\": \"16 rue chinard\",\n    \"city\": \"Lyon\",\n    \"role\":\"MANAGER\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -41,7 +41,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"pandemik69\",\n    \"firstName\": \"Loic\",\n    \"lastName\": \"Roux\"\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -49,13 +49,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{endpoint}}/{{route}}/pandemik69",
+							"raw": "{{endpoint}}/{{route}}/60dda106f23a9a5d8cb93093",
 							"host": [
 								"{{endpoint}}"
 							],
 							"path": [
 								"{{route}}",
-								"pandemik69"
+								"60dda106f23a9a5d8cb93093"
 							]
 						}
 					},
@@ -134,7 +134,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{endpoint}}/{{route}}?_id=60894f212719e6d67df86cf0",
+							"raw": "{{endpoint}}/{{route}}?_id=60dda106f23a9a5d8cb93093",
 							"host": [
 								"{{endpoint}}"
 							],
@@ -144,7 +144,7 @@
 							"query": [
 								{
 									"key": "_id",
-									"value": "60894f212719e6d67df86cf0"
+									"value": "60dda106f23a9a5d8cb93093"
 								}
 							]
 						}
@@ -174,7 +174,7 @@
 			]
 		},
 		{
-			"name": "courses",
+			"name": "hotels",
 			"item": [
 				{
 					"name": "view",
@@ -311,7 +311,7 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"pm.environment.set(\"route\", 'courses');",
+							"pm.environment.set(\"route\", 'hotels');",
 							""
 						]
 					}
@@ -328,7 +328,7 @@
 			]
 		},
 		{
-			"name": "sessions",
+			"name": "rooms",
 			"item": [
 				{
 					"name": "view",
@@ -472,7 +472,7 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"pm.environment.set(\"route\", 'courses/sessions');"
+							"pm.environment.set(\"route\", 'rooms');"
 						]
 					}
 				},
@@ -672,9 +672,6 @@
 		{
 			"name": "token introspection",
 			"request": {
-				"auth": {
-					"type": "noauth"
-				},
 				"method": "POST",
 				"header": [],
 				"body": {
