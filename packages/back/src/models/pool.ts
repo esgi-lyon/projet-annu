@@ -2,9 +2,9 @@
 import { Document, Schema, Model, model } from "mongoose";
 import CourseModel, { CourseDocument } from "./Course";
 
-const SessionSchema: Schema<SessionDocument, SessionBaseModel> = new Schema<
-  SessionDocument,
-  SessionBaseModel
+const PoolSchema: Schema<PoolDocument, PoolBaseModel> = new Schema<
+  PoolDocument,
+  PoolBaseModel
 >({
   name: {
     type: String,
@@ -32,26 +32,16 @@ const SessionSchema: Schema<SessionDocument, SessionBaseModel> = new Schema<
   },
 });
 
-interface Session {
+interface Pool {
   name: string;
   desc: string;
   tags: number;
 }
 
-export interface SessionDocument extends Session, Document {
+export interface PoolDocument extends Pool, Document {
   course: CourseDocument["_id"];
 }
 
-export interface SessionBaseModel extends Model<SessionDocument> {}
+export interface PoolBaseModel extends Model<PoolDocument> {}
 
-SessionSchema.pre(
-  "insertMany",
-  async function (next: Function, docs: SessionDocument[]): Promise<void> {
-    return next();
-  }
-);
-
-export default model<SessionDocument, SessionBaseModel>(
-  "Session",
-  SessionSchema
-);
+export default model<PoolDocument, PoolBaseModel>("Pool", PoolSchema);

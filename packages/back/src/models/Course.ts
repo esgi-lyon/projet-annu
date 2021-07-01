@@ -18,10 +18,10 @@ const CourseSchema: Schema<CourseDocument, CourseBaseModel> = new Schema<
     type: Array,
     required: false,
   },
-  rooms: [
+  session: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Room",
+      ref: "Session",
       required: false,
       validate: {
         validator: (_id: number, _: any) => _id == null,

@@ -23,13 +23,13 @@ import { TokenProtectedMiddleware } from "../modules/oauth/middlewares/PassportM
 export default class HotelController implements CRLUD {
   private readonly crudService: CrudService = new CrudService(HotelModel);
 
-  @Get("/:name")
+  @Get("/:_id")
   async read(
     @Query() query: FilterQuery<CourseDocument>,
     @Response() res: ExpressResponse,
-    @Params("name") name: string | undefined
+    @Params("_id") _id: string | undefined
   ): Promise<void> {
-    jsonWithStatus(res, await this.crudService.read(query, { name }));
+    jsonWithStatus(res, await this.crudService.read(query, { _id }));
   }
 
   @Put("/")
