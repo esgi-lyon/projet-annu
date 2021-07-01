@@ -5,9 +5,9 @@ ENV PORT=80
 
 WORKDIR /app
 
-COPY package*.json .
+COPY ["package.json", "package-lock.json*", "./"]
 
-RUN npm install
+RUN npm install --production
 
 COPY . .
 
@@ -15,6 +15,8 @@ COPY . .
 RUN node node_modules/esbuild/install.js || true
 
 RUN npm run build
+
+RUN ls dist
 
 EXPOSE 80
 

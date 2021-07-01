@@ -2,6 +2,11 @@
 
 > [MCD](https://excalidraw.com/#room=5dbc1a6afa3847a2d702,gJ_FV9rbrkXtNkonjfPaDA )
 
+## install
+
+- `npm i && node node_modules/esbuild/install.js`
+- `npm run dev`
+
 ## Route map
 
 - **/courses**

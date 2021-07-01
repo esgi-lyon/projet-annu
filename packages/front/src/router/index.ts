@@ -40,6 +40,11 @@ const routes: Array<RouteRecordRaw> = [
   //   },
   // },
   // {
+  //   path: '/logout',
+  //   name: 'Logout',
+  //   component: Logout,
+  // },
+  // {
   //   path: '*',
   //   name: 'NotFound',
   //   component: NotFound,
