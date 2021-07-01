@@ -27,13 +27,13 @@ export default class UserController implements CRLUD {
    * List all users
    * Param override query
    */
-  @Get("/:name")
+  @Get("/:_id")
   async read(
     @Query() query: FilterQuery<UserDocument>,
     @Response() res: any,
-    @Params("name") name: string | undefined
+    @Params("_id") _id: string | undefined
   ): Promise<void> {
-    jsonWithStatus(res, await this.crudService.read(query, { name }));
+    jsonWithStatus(res, await this.crudService.read(query, { _id }));
   }
 
   /**
@@ -61,24 +61,24 @@ export default class UserController implements CRLUD {
   /**
    * Update when knowning entity
    */
-  @Patch("/:name")
+  @Patch("/:_id")
   async update(
     @Body() body: UserDocument,
     @Response() res: ExpressResponse,
-    @Params("name") name: string
+    @Params("_id") _id: string
   ): Promise<void> {
-    jsonWithStatus(res, await this.crudService.update({ name }, body));
+    jsonWithStatus(res, await this.crudService.update({ _id }, body));
   }
 
   /**
    * Delete an entity
    */
-  @Delete("/:name")
+  @Delete("/:_id")
   async delete(
     @Query() query: FilterQuery<UserDocument>,
     @Response() res: ExpressResponse,
-    @Params("name") name: string
+    @Params("_id") _id: string
   ): Promise<void> {
-    jsonWithStatus(res, await this.crudService.delete({ ...query, name }));
+    jsonWithStatus(res, await this.crudService.delete({ ...query, _id }));
   }
 }
