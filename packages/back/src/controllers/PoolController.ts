@@ -10,7 +10,7 @@ import {
   Body,
 } from "@decorators/express";
 import { Response as ExpressResponse } from "express";
-import HotelModel, { PoolDocument } from "../models/Pool";
+import PoolModel, { PoolDocument } from "../models/pool";
 import { CRLUD } from "../modules/mongodb/types";
 import { CrudService } from "../modules/mongodb";
 import { Injectable } from "@decorators/di";
@@ -20,8 +20,8 @@ import { TokenProtectedMiddleware } from "../modules/oauth/middlewares/PassportM
 
 @Injectable()
 @Controller("/courses/pools", [TokenProtectedMiddleware])
-export default class HotelController implements CRLUD {
-  private readonly crudService: CrudService = new CrudService(HotelModel);
+export default class PoolController implements CRLUD {
+  private readonly crudService: CrudService = new CrudService(PoolModel);
 
   @Get("/:_id")
   async read(
@@ -57,7 +57,7 @@ export default class HotelController implements CRLUD {
     jsonWithStatus(res, await this.crudService.update({ _id }, body));
   }
 
-  @Delete("/")
+  @Delete("/:_id")
   async delete(
     @Query() query: FilterQuery<PoolDocument>,
     @Response() res: ExpressResponse,

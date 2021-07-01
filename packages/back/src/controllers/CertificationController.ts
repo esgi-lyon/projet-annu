@@ -16,16 +16,20 @@ import { Injectable } from "@decorators/di";
 import { jsonWithStatus } from "../modules/expressInternal";
 import { FilterQuery } from "mongoose";
 import { TokenProtectedMiddleware } from "../modules/oauth/middlewares/PassportMiddleware";
-import BookingModel, { BookingDocument } from "../models/Certification";
+import CertificationModel, {
+  CertificationDocument,
+} from "../models/Certification";
 
 @Injectable()
-@Controller("/booking", [TokenProtectedMiddleware])
-export default class BookingController implements CRLUD {
-  private readonly crudService: CrudService = new CrudService(BookingModel);
+@Controller("/certifications", [TokenProtectedMiddleware])
+export default class CertificationController implements CRLUD {
+  private readonly crudService: CrudService = new CrudService(
+    CertificationModel
+  );
 
   @Get("/:_id")
   async read(
-    @Query() query: FilterQuery<BookingDocument>,
+    @Query() query: FilterQuery<CertificationDocument>,
     @Response() res: ExpressResponse,
     @Params("_id") _id: string | undefined
   ): Promise<void> {
@@ -34,7 +38,7 @@ export default class BookingController implements CRLUD {
 
   @Put("/")
   async create(
-    @Body() body: BookingDocument | BookingDocument[],
+    @Body() body: CertificationDocument | CertificationDocument[],
     @Response() res: ExpressResponse
   ): Promise<void> {
     jsonWithStatus(res, await this.crudService.create(body));
@@ -42,7 +46,7 @@ export default class BookingController implements CRLUD {
 
   @Get("/")
   async list(
-    @Query() query: FilterQuery<BookingDocument>,
+    @Query() query: FilterQuery<CertificationDocument>,
     @Response() res: ExpressResponse
   ): Promise<void> {
     await this.read(query ?? {}, res, undefined);
@@ -50,7 +54,7 @@ export default class BookingController implements CRLUD {
 
   @Patch("/:_id")
   async update(
-    @Body() body: BookingDocument,
+    @Body() body: CertificationDocument,
     @Response() res: ExpressResponse,
     @Params("_id") _id: string
   ): Promise<void> {
@@ -59,7 +63,7 @@ export default class BookingController implements CRLUD {
 
   @Delete("/:_id")
   async delete(
-    @Query() query: FilterQuery<BookingDocument>,
+    @Query() query: FilterQuery<CertificationDocument>,
     @Response() res: ExpressResponse,
     @Params("_id") _id: string
   ): Promise<void> {

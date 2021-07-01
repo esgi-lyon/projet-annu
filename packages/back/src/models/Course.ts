@@ -22,7 +22,6 @@ const CourseSchema: Schema<CourseDocument, CourseBaseModel> = new Schema<
     {
       type: Schema.Types.ObjectId,
       ref: "Session",
-      required: false,
       validate: {
         validator: (_id: number, _: any) => _id == null,
         message: "Cannot be added from here",

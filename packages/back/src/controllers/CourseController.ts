@@ -57,7 +57,7 @@ export default class HotelController implements CRLUD {
     jsonWithStatus(res, await this.crudService.update({ _id }, body));
   }
 
-  @Delete("/")
+  @Delete("/:_id")
   async delete(
     @Query() query: FilterQuery<CourseDocument>,
     @Response() res: ExpressResponse,
