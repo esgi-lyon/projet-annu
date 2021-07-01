@@ -9,9 +9,13 @@
 ## Ressources
 
 - [MCD](https://excalidraw.com/#room=5dbc1a6afa3847a2d702,gJ_FV9rbrkXtNkonjfPaDA )
-- [Maquettes (TODO adobe xd)](https://github.com/esgi-lyon/projet-annu#)
+- [Maquettes](/doc/maquettes/maquettes.pdf)
 - [Kanban](https://github.com/esgi-lyon/projet-annu/projects/1)
 - [Collections postman](/doc/Node.postman_collection.json)
+
+## Plans de l'app
+
+- [Admin](https://www.gloomaps.com/GCi2p49q2z)
 
 ## Install
 
@@ -65,7 +69,7 @@ Staging area &rarr; repo local &rarr; remote
 ```sh
 # Bases
 git status # Consulter l'état de la staging area
-git diff # Consulter les modifs, ajouter --staged si les fichiers ont étés git add 
+git diff # Consulter les modifs, ajouter --staged si les fichiers ont étés git add
 git add -A # Ajouter tous les fichiers modifiés et nouveaux dans le prochaint commit
 git commit -m "" # Placer tous les fichiers ready (en vert) dans un commit
 git remote -v # Voir les remotes distantes liés à notre remote locale
@@ -73,7 +77,7 @@ git log -10 # historique des commit (-10 = en voir que 10)
 
 # Utiles...
 # Stocker vos modifications courantes avant de mettre à jour la branche
-git stash 
+git stash
 # remettre dans la staging area ce que vous avez sauvegarder avec git stash
 git stash pop
 
