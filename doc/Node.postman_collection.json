@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "bf1a7ea9-0a54-4964-bcd7-0f67fc189ea0",
-		"name": "Node projet annu",
+		"_postman_id": "6d652c01-4a02-4c65-93cf-78905407d2e7",
+		"name": "Node-tp",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"login\": \"test\",\n    \"firstName\": \"firstnameTest\",\n    \"lastName\": \"lastnameTest\",\n    \"password\": \"password\",\n    \"adress\": \"16 rue chinard\",\n    \"city\": \"Lyon\",\n    \"role\":\"MANAGER\"\n}",
+							"raw": "{\n    \"firstName\": \"toto\",\n    \"lastName\": \"Roux\",\n    \"role\": \"STUDENT\",\n    \"password\": \"test\",\n    \"email\": \"lala@student.fr\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -41,7 +41,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "",
+							"raw": "{\n    \"username\": \"pandemik69\",\n    \"firstName\": \"Loic\",\n    \"lastName\": \"Roux\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -49,13 +49,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{endpoint}}/{{route}}/60dda106f23a9a5d8cb93093",
+							"raw": "{{endpoint}}/{{route}}/60ddf83d6b2ce718169f5cfd",
 							"host": [
 								"{{endpoint}}"
 							],
 							"path": [
 								"{{route}}",
-								"60dda106f23a9a5d8cb93093"
+								"60ddf83d6b2ce718169f5cfd"
 							]
 						}
 					},
@@ -134,7 +134,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{endpoint}}/{{route}}?_id=60dda106f23a9a5d8cb93093",
+							"raw": "{{endpoint}}/{{route}}?_id=60894f212719e6d67df86cf0",
 							"host": [
 								"{{endpoint}}"
 							],
@@ -144,7 +144,7 @@
 							"query": [
 								{
 									"key": "_id",
-									"value": "60dda106f23a9a5d8cb93093"
+									"value": "60894f212719e6d67df86cf0"
 								}
 							]
 						}
@@ -174,7 +174,7 @@
 			]
 		},
 		{
-			"name": "hotels",
+			"name": "courses",
 			"item": [
 				{
 					"name": "view",
@@ -285,7 +285,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"user\",\n    \"supply\": [\n        \"room\",\n        \"toto\"\n    ],\n    \"address\": \"12 barceloneta ramba fadoli\",\n    \"rate\": 2,\n    \"coordinates\": {}\n}",
+							"raw": "{\n  \"name\": \"Js\",\n  \"desc\": \"js course\",\n  \"tags\": [\"Js\", \"web\"]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -311,7 +311,7 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"pm.environment.set(\"route\", 'hotels');",
+							"pm.environment.set(\"route\", 'courses');",
 							""
 						]
 					}
@@ -328,7 +328,7 @@
 			]
 		},
 		{
-			"name": "rooms",
+			"name": "sessions",
 			"item": [
 				{
 					"name": "view",
@@ -367,21 +367,9 @@
 				},
 				{
 					"name": "list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "{{endpoint}}/{{route}}",
 							"host": [
@@ -446,7 +434,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n    {\n        \"capacity\": 2,\n        \"price\": 101,\n        \"hotel\": \"60ad8df81aa9e343d184d8d9\"\n    },\n    {\n        \"capacity\": 4,\n        \"price\": 99,\n        \"hotel\": \"60ad8dd31aa9e343d184d8d6\"\n    }\n]",
+							"raw": "{\n  \"name\": \"4\",\n  \"desc\": \"session 4\",\n  \"course\": \"60ddf8c170407f185a55077e\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -472,7 +460,7 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"pm.environment.set(\"route\", 'rooms');"
+							"pm.environment.set(\"route\", 'sessions');"
 						]
 					}
 				},
@@ -488,7 +476,167 @@
 			]
 		},
 		{
-			"name": "booking",
+			"name": "pools",
+			"item": [
+				{
+					"name": "view",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/{{route}}?_id=608b3591cd032c3fac96c2a4",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"{{route}}"
+							],
+							"query": [
+								{
+									"key": "_id",
+									"value": "608b3591cd032c3fac96c2a4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/{{route}}",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"{{route}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"students\": [],\n    \"course\": \"60ddf8c170407f185a55077e\",\n    \"coach\": \"60ddfd5b7cf56e23ccf09b47\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/{{route}}/:_id",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"{{route}}",
+								":_id"
+							],
+							"variable": [
+								{
+									"key": "_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/{{route}}/:_id",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"{{route}}",
+								":_id"
+							],
+							"variable": [
+								{
+									"key": "_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"students\": [\"60de01d5a43c742828f0d9f8\"],\n    \"course\": \"60de017da43c742828f0d9f3\",\n    \"coach\": \"60de0189a43c742828f0d9f4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/{{route}}",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"{{route}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"route\", 'pools');"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "certifications",
 			"item": [
 				{
 					"name": "view",
@@ -561,7 +709,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"supply\": [\n        \"room\",\n        \"toto\"\n    ],\n    \"rooms\": [],\n    \"_id\": \"608b3591cd032c3fac96c2a4\",\n    \"name\": \"userA\",\n    \"address\": \"4 rue de l'artiste\",\n    \"rate\": 2,\n    \"__v\": 0\n}",
+							"raw": "{  \n  \"name\": \"string\",\n  \"course\": \"toto\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -569,13 +717,19 @@
 							}
 						},
 						"url": {
-							"raw": "{{endpoint}}/rooms/user",
+							"raw": "{{endpoint}}/{{route}}/:id",
 							"host": [
 								"{{endpoint}}"
 							],
 							"path": [
-								"rooms",
-								"user"
+								"{{route}}",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -587,14 +741,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{endpoint}}/{{route}}?_id=",
+							"raw": "{{endpoint}}/{{route}}/:_id",
 							"host": [
 								"{{endpoint}}"
 							],
 							"path": [
-								"{{route}}"
+								"{{route}}",
+								":_id"
 							],
-							"query": [
+							"variable": [
 								{
 									"key": "_id",
 									"value": ""
@@ -637,7 +792,7 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"pm.collectionVariables.set(\"route\", \"booking\");"
+							"pm.collectionVariables.set(\"route\", \"certifications\");"
 						]
 					}
 				},
@@ -747,18 +902,8 @@
 		{
 			"name": "token well known",
 			"request": {
-				"auth": {
-					"type": "noauth"
-				},
 				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "",
-						"type": "text",
-						"disabled": true
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "urlencoded",
 					"urlencoded": [
@@ -902,6 +1047,12 @@
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"key": "route",
+			"value": ""
 		}
 	]
 }

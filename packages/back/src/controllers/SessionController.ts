@@ -10,7 +10,7 @@ import {
   Body,
 } from "@decorators/express";
 import { Response as ExpressResponse } from "express";
-import RoomModel, { SessionDocument } from "../models/Session";
+import SessionModel, { SessionDocument } from "../models/Session";
 import { CRLUD } from "../modules/mongodb/types";
 import { CrudService } from "../modules/mongodb";
 import { Injectable } from "@decorators/di";
@@ -19,9 +19,9 @@ import { FilterQuery } from "mongoose";
 import { TokenProtectedMiddleware } from "../modules/oauth/middlewares/PassportMiddleware";
 
 @Injectable()
-@Controller("/courses/sessions", [TokenProtectedMiddleware])
-export default class RoomController implements CRLUD {
-  private readonly crudService: CrudService = new CrudService(RoomModel);
+@Controller("/sessions", [TokenProtectedMiddleware])
+export default class SessionController implements CRLUD {
+  private readonly crudService: CrudService = new CrudService(SessionModel);
 
   @Get("/:_id")
   async read(
@@ -40,11 +40,12 @@ export default class RoomController implements CRLUD {
     jsonWithStatus(res, await this.crudService.create(body));
   }
 
-  @Get("/")
+  @Get("")
   async list(
     @Query() query: FilterQuery<SessionDocument>,
     @Response() res: ExpressResponse
   ): Promise<void> {
+    console.log(query);
     await this.read(query ?? {}, res, undefined);
   }
 
