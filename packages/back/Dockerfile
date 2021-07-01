@@ -1,23 +1,20 @@
 FROM node:14-alpine3.13
 
 ENV NODE_ENV=production
-ENV PORT=80
 
 WORKDIR /app
+
+VOLUME ["/app/dist", "/app/node_modules", "/app/src"]
 
 COPY ["package.json", "package-lock.json*", "./"]
 
 RUN npm install --production
 
+# Dist builded by host
 COPY . .
-
-# Fix service error
-RUN node node_modules/esbuild/install.js || true
 
 RUN npm run build
 
-RUN ls dist
-
-EXPOSE 80
+EXPOSE 8080
 
 CMD ["node", "dist/app.js"]
