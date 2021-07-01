@@ -10,7 +10,7 @@ import {
   Body,
 } from "@decorators/express";
 import { Response as ExpressResponse } from "express";
-import PoolModel, { PoolDocument } from "../models/pool";
+import PoolModel, { PoolDocument } from "../models/Pool";
 import { CRLUD } from "../modules/mongodb/types";
 import { CrudService } from "../modules/mongodb";
 import { Injectable } from "@decorators/di";

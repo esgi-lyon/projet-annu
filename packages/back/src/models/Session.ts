@@ -44,13 +44,6 @@ export interface SessionDocument extends Session, Document {
 
 export interface SessionBaseModel extends Model<SessionDocument> {}
 
-SessionSchema.pre(
-  "insertMany",
-  async function (next: Function, docs: SessionDocument[]): Promise<void> {
-    return next();
-  }
-);
-
 export default model<SessionDocument, SessionBaseModel>(
   "Session",
   SessionSchema

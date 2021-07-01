@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { Document, Schema, Model, model } from "mongoose";
-import SessionModel, { SessionDocument } from "./Session";
+import SessionModel from "./Session";
 
 const CourseSchema: Schema<CourseDocument, CourseBaseModel> = new Schema<
   CourseDocument,
@@ -18,16 +18,6 @@ const CourseSchema: Schema<CourseDocument, CourseBaseModel> = new Schema<
     type: Array,
     required: false,
   },
-  session: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Session",
-      validate: {
-        validator: (_id: number, _: any) => _id == null,
-        message: "Cannot be added from here",
-      },
-    },
-  ],
 });
 
 interface Course {
@@ -38,9 +28,7 @@ interface Course {
   coordinates: Object;
 }
 
-export interface CourseDocument extends Course, Document {
-  sessions?: [SessionDocument["_id"]];
-}
+export interface CourseDocument extends Course, Document {}
 
 export interface CourseBaseModel extends Model<CourseDocument> {}
 
