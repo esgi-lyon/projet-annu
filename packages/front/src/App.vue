@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <NavBar/>
+      <NavBar v-if="$router.currentRoute._value.fullPath.includes('admin')"/>
       <v-container>
         <router-view></router-view>
       </v-container>

@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import Course from '../components/Course'
+import Course from '../components/Course.vue'
 import api from '../services/api'
 
 export default {
@@ -56,10 +56,10 @@ export default {
     }
   },
   mounted() {
-    this.getTranscripts()
+    this.getCourses()
   },
   methods: {
-    async getTranscripts() {
+    async getCourses() {
       return (await api.get('/courses')).data
     },
   },

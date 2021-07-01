@@ -1,54 +1,72 @@
 import { createWebHistory, createRouter } from "vue-router";
 import { RouteRecordRaw } from "vue-router";
 import { useStore } from "vuex"
-// import Login from "../components/Login"
+import { setToken } from "../utils/token"
 
 const store = useStore()
 const routes: Array<RouteRecordRaw> = [
+  // front office routes
   {
     path: "/",
-    alias: "/list",
-    name: "list",
-    component: () => import("../components/List.vue"),
+    name: "Front office - formations",
+    component: () => import("../views/FOCourseList.vue"),
+  },
+  {
+    path: "/:id",
+    name: "formation",
+    props: true,
+    component: () => import("../views/FOCourseShow.vue"),
+  },
+  {
+    path: "/:id/register",
+    name: "Inscription",
+    props: true,
+    component: () => import("../views/FORegister.vue"),
+  },
+  // admin routes
+  {
+    path: "/admin/managers",
+    name: "Intervants",
+    component: () => import("../views/ManagerList.vue"),
     meta: { requiresAuth: true, inMenu: true, icon: 'mdi-view-list' },
   },
   {
-    path: "/read/:id",
-    name: "read",
-    component: () => import("../components/Read.vue"),
-    meta: { requiresAuth: true },
+    path: "/admin",
+    alias: "/admin/courses",
+    name: "Formations",
+    component: () => import("../views/CourseList.vue"),
+    meta: { requiresAuth: true, inMenu: true, icon: 'mdi-view-list' },
   },
   {
-    path: "/add",
+    path: "/admin/courses/add",
     name: "add",
-    component: () => import("../components/Add.vue"),
+    component: () => import("../views/CourseAdd.vue"),
   },
-  // {
-  //   path: '/login',
-  //   name: 'Login',
-  //   component: Login,
-  // },
-  // {
-  //   path: '/logout',
-  //   name: 'Logout',
-  //   beforeEnter: (to, from, next) => {
-  //     setToken('')
-  //     store.dispatch('auth/logout')
-  //     next({
-  //       path: '/login',
-  //     })
-  //   },
-  // },
-  // {
-  //   path: '/logout',
-  //   name: 'Logout',
-  //   component: Logout,
-  // },
-  // {
-  //   path: '*',
-  //   name: 'NotFound',
-  //   component: NotFound,
-  // },
+  {
+    path: "/admin/courses/:id",
+    props: true,
+    name: "add",
+    component: () => import("../components/CourseDetails.vue"),
+  },
+  {
+    path: '/admin/login',
+    name: 'Login',
+    component: () => import("../views/VLogin.vue"),
+  },
+  {
+    path: '/admin/logout',
+    name: 'Logout',
+    redirect: to => {
+      setToken('')
+      store.dispatch('auth/logout')
+      return { path: '/admin' }
+    },
+  },
+  {
+    path: '/*',
+    name: 'NotFound',
+    component: () => import("../views/NotFound.vue"),
+  },
 ];
 
 const router = createRouter({

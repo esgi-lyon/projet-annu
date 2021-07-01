@@ -1,7 +1,7 @@
 <template>
   <v-container fluid grid-list-md text-center>
     <v-alert v-model="alert" dark color="red">
-      La clé n'est pas bonne !
+      Erreur
     </v-alert>
     <v-layout align-center justify-center>
       <v-flex xs12 sm8 md4>
@@ -22,8 +22,8 @@
                 :rules="tokenRules"
                 label="Clé d'accès"
                 append-icon="mdi-arrow-right-bold-circle-outline"
-                @click:append="validate"
                 required
+                @click:append="validate"
               />
               <p>
                 Connectez vous à l'aide de la clé d'accès délivrée par votre
