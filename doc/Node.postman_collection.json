@@ -174,7 +174,7 @@
 			]
 		},
 		{
-			"name": "hotels",
+			"name": "courses",
 			"item": [
 				{
 					"name": "view",
@@ -311,7 +311,7 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"pm.environment.set(\"route\", 'hotels');",
+							"pm.environment.set(\"route\", 'courses');",
 							""
 						]
 					}
@@ -328,7 +328,7 @@
 			]
 		},
 		{
-			"name": "rooms",
+			"name": "sessions",
 			"item": [
 				{
 					"name": "view",
@@ -472,7 +472,7 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"pm.environment.set(\"route\", 'rooms');"
+							"pm.environment.set(\"route\", 'courses/sessions');"
 						]
 					}
 				},
@@ -672,6 +672,9 @@
 		{
 			"name": "token introspection",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
