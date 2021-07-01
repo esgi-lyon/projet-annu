@@ -1,48 +1,60 @@
 import { Document, Model, model, Schema } from "mongoose";
-import { RoomDocument } from "./Room";
+// import { RoomDocument } from "./Room";
 
 // Schema
 const UserSchema: Schema<UserDocument, UserModel> = new Schema<
   UserDocument,
   UserModel
 >({
+  login: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  adress: {
+    type: String,
+    required: true,
+  },
+  city: {
+    type: String,
+    required: true,
+  },
   firstName: {
     type: String,
     required: true,
   },
-  lastName: String,
-  name: {
-    type: String,
-    unique: true,
-    required: true,
-    lowercase: true,
-  },
-  token: {
+  lastName: {
     type: String,
     required: true,
   },
-  currentRoom: {
-    type: Schema.Types.ObjectId,
-    ref: "Room",
-    required: false,
+  role: {
+    type: String,
+    enum: ["TEACHER", "MANAGER", "COACH", "STUDENT"],
+    required: true,
   },
 });
 
 interface User {
+  login: string;
+  password: string;
+  adress: string;
+  city: string;
   firstName: string;
-  lastName?: string;
-  name: string;
-  token: string;
+  lastName: string;
+  role: string;
 }
 
 export interface UserDocument extends User, Document {
   fullName: string;
-  currentRoom?: RoomDocument["_id"];
+  // currentRoom?: RoomDocument["_id"];
 }
 
 // For model
 export interface UserModel extends Model<UserDocument> {
-  findRoom: (id: string) => Promise<RoomDocument>;
+  // findRoom: (id: string) => Promise<RoomDocument>;
 }
 
 // Virtuals
