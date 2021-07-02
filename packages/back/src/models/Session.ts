@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { Document, Schema, Model, model } from "mongoose";
 import CourseModel, { CourseDocument } from "./Course";
-import { UserDocument } from "./User";
+import UserModel, { UserDocument } from "./User";
 
 const SessionSchema: Schema<SessionDocument, SessionBaseModel> = new Schema<
   SessionDocument,
@@ -15,7 +15,15 @@ const SessionSchema: Schema<SessionDocument, SessionBaseModel> = new Schema<
     type: String,
     required: true,
   },
-  coach: {
+  startAt: {
+    type: Date,
+    required: true,
+  },
+  finishAt: {
+    type: Date,
+    required: true,
+  },
+  teacher: {
     type: Schema.Types.ObjectId,
     ref: "User",
     required: true,

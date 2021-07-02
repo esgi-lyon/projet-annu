@@ -11,13 +11,13 @@ const routes: RouteRecordRaw[] = [
     component: () => import("../views/FOCourseList.vue"),
   },
   {
-    path: "/:id",
+    path: "/fo/:id",
     name: "formation",
     props: true,
     component: () => import("../views/FOCourseDetails.vue"),
   },
   {
-    path: "/:id/register",
+    path: "/fo/:id/register",
     name: "Inscription",
     props: true,
     component: () => import("../views/FORegister.vue"),
@@ -62,7 +62,7 @@ const routes: RouteRecordRaw[] = [
     },
   },
   {
-    path: '/*',
+    path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: () => import("../views/NotFound.vue"),
   },
