@@ -19,5 +19,6 @@
     "lint": "lerna run lint",
     "bootstrap": "lerna bootstrap",
     "postupdate": "npm i && npm run lerna bootstrap && npm run build && npm run test"
-  }
+  },
+  "dependencies": {}
 }

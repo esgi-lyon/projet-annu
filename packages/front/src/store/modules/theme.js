@@ -15,7 +15,7 @@ const actions = {
 
 const getters = {
   isDefaultTheme: ({ theme }) => theme === THEMES.DARK,
-  isLightTheme: (state, getters) => !getters.isDefaultTheme(),
+  isLightTheme: (_, getters) => !getters.isDefaultTheme(),
 }
 
 const mutations = {

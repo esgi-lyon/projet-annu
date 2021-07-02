@@ -1,10 +1,9 @@
-import { createWebHistory, createRouter } from "vue-router";
-import { RouteRecordRaw } from "vue-router";
-import { useStore } from "vuex"
+import { createWebHistory, createRouter, RouteRecordRaw  } from "vue-router";
+import { useStore, Store } from "vuex"
 import { setToken } from "../utils/token"
 
-const store = useStore()
-const routes: Array<RouteRecordRaw> = [
+const store: Store<any> = useStore()
+const routes: RouteRecordRaw[] = [
   // front office routes
   {
     path: "/",
@@ -15,7 +14,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/:id",
     name: "formation",
     props: true,
-    component: () => import("../views/FOCourseShow.vue"),
+    component: () => import("../views/FOCourseDetails.vue"),
   },
   {
     path: "/:id/register",

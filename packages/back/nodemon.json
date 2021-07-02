@@ -1,5 +1,4 @@
 {
-    "signal": "SIGHUP",
     "restartable": "rs",
     "ignore": [
       ".git",
