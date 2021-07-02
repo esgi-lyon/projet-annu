@@ -20,5 +20,7 @@
     "bootstrap": "lerna bootstrap",
     "postupdate": "npm i && npm run lerna bootstrap && npm run build && npm run test"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@asigloo/vue-dynamic-forms": "^3.14.0"
+  }
 }

@@ -8,7 +8,7 @@
         {{ item.tags }}
       </v-card-text>
       <v-card-actions class="justify-center">
-        <v-btn flat small color="primary" :href="`/fo/courses/${item._id}`">
+        <v-btn flat small color="primary" link :to="`/fo/${item._id}`">
           Consulter
         </v-btn>
       </v-card-actions>

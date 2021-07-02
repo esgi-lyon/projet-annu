@@ -5,7 +5,8 @@
         <h1 class="display-1 font-weight-bold mb-3">404 Not Found</h1>
 
         <p class="subheading font-weight-regular">
-          <a link to="/" target="_blank">Go to home page</a>
+          <BackButton/>
+          <span>Retour</span>
         </p>
       </v-col>
     </v-row>
@@ -13,7 +14,10 @@
 </template>
 
 <script>
+import BackButton from '../components/BackButton.vue'
+
 export default {
   name: 'NotFound',
+  components: { BackButton }
 }
 </script>

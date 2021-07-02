@@ -12,7 +12,9 @@
     "test": "echo 'not yet implemented'"
   },
   "dependencies": {
+    "@koumoul/vjsf": "^2.0.3",
     "@mdi/font": "5.9.55",
+    "@popperjs/core": "^2.9.2",
     "roboto-fontface": "*",
     "v-calendar": "^3.0.0-alpha.5",
     "vue": "^3.0.5",

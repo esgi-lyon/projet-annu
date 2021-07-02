@@ -26,7 +26,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/admin/managers",
     name: "Intervants",
-    component: () => import("../views/ManagerList.vue"),
+    component: () => import("../views/ManagerDashboard.vue"),
     meta: { requiresAuth: true, inMenu: true, icon: 'mdi-view-list' },
   },
   {
@@ -38,8 +38,9 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: "/admin/courses/add",
-    name: "add",
+    name: "Ajouter une formation",
     component: () => import("../views/CourseAdd.vue"),
+    meta: { requiresAuth: true, inMenu: true, icon: 'mdi-view-list' },
   },
   {
     path: "/admin/courses/:id",
