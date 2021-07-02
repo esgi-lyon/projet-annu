@@ -5,6 +5,7 @@ import {
   LoggerMiddleware,
   LoggerErrorMiddleware,
 } from "./middlewares/LoggerMiddleware";
+import CorsMiddleware from "./middlewares/CorsMiddleware";
 import bodyParser from "body-parser";
 import server from "./server";
 import oauth from "./modules/oauth";
@@ -15,6 +16,7 @@ const app = express();
   // Logger middlewares
   app.use(LoggerMiddleware);
   app.use(LoggerErrorMiddleware);
+  app.use(CorsMiddleware);
 
   server(app);
   // Auth

@@ -25,8 +25,9 @@
 <script>
 import api from "../services/api";
 import BackButton from './BackButton.vue'
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "Course",
   components: { BackButton },
   data() {
@@ -61,7 +62,7 @@ export default {
       return process.env.VUE_APP_API + "/" + this.course[type];
     },
   },
-};
+});
 </script>
 
 <style scoped>
