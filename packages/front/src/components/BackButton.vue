@@ -1,7 +1,9 @@
 <template>
-  <v-btn class="mx-2" fab dark small color="primary" @click="returnTranscript">
-    <v-icon dark>mdi-arrow-left</v-icon>
-  </v-btn>
+  <div class="my-2">
+    <v-btn icon fab dark small rounded color="primary" @click="returnTranscript">
+      <v-icon small dark>mdi-arrow-left</v-icon>
+    </v-btn>
+  </div>
 </template>
 
 <script lang="ts">

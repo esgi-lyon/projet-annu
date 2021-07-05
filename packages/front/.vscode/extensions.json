@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "EditorConfig.EditorConfig",
+        "octref.vetur",
         "wscats.vue",
         "dbaeumer.vscode-eslint",
         "drknoxy.eslint-disable-snippets",

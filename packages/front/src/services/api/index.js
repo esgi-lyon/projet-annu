@@ -30,25 +30,44 @@ class ApiService {
     return this[singleton]
   }
 
-  async get (...params) { return await this.session.get(...params) };
-  async post (...params) { return this.session.post(...params) };
-  async put (...params) { return this.session.put(...params) };
-  async patch (...params) { return this.session.patch(...params) };
-  async remove (...params) { return  this.session.delete(...params) };
+  async get(...params) {
+    this.auth()
+    return await this.session.get(...params)
+  };
+  async post(...params) {
+    this.auth()
+    return await this.session.post(...params)
+  };
+  async put(...params) {
+    this.auth()
+    return await this.session.put(...params)
+  };
+  async patch(...params) {
+    this.auth()
+    return await this.session.patch(...params)
+  };
+  async remove(...params) {
+    this.auth()
+    return await this.session.delete(...params)
+  };
 
   async checkLogin() {
     return { data: await this.get('/auth/token/introspection'), token: getToken() }
   }
 
-  async auth({ name, token }) {
-    const payload = await this.post('login', {
-      token: token,
-      name: name,
+  async auth({ VITE_API_CLIENT_ID, VITE_API_CLIENT_SECRET } = import.meta.env) {
+    if (this.checkLogin) return { access_token: getToken() }
+
+    const payload = await this.post('/auth/token', {
+      grant_type: 'client_credentials',
+      client_id: VITE_API_CLIENT_ID,
+      client_secret: VITE_API_CLIENT_SECRET,
+      scopes: 'api'
     })
 
-    setToken(payload.data.token)
-    this.session.defaults.headers.Authorization = `Bearer ${payload.data.token}`
-
+    setToken(payload.data.access_token)
+    this.session.defaults.headers.Authorization = `Bearer ${payload.data.access_token}`
+console.log(this.session.defaults.headers.Authorization)
     return payload
   }
 }

@@ -11,13 +11,13 @@ const routes: RouteRecordRaw[] = [
     component: () => import("../views/FOCourseList.vue"),
   },
   {
-    path: "/:id",
+    path: "/fo/:id",
     name: "formation",
     props: true,
     component: () => import("../views/FOCourseDetails.vue"),
   },
   {
-    path: "/:id/register",
+    path: "/fo/:id/register",
     name: "Inscription",
     props: true,
     component: () => import("../views/FORegister.vue"),
@@ -26,7 +26,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/admin/managers",
     name: "Intervants",
-    component: () => import("../views/ManagerList.vue"),
+    component: () => import("../views/ManagerDashboard.vue"),
     meta: { requiresAuth: true, inMenu: true, icon: 'mdi-view-list' },
   },
   {
@@ -38,8 +38,9 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: "/admin/courses/add",
-    name: "add",
+    name: "Ajouter une formation",
     component: () => import("../views/CourseAdd.vue"),
+    meta: { requiresAuth: true, inMenu: true, icon: 'mdi-view-list' },
   },
   {
     path: "/admin/courses/:id",
@@ -62,7 +63,7 @@ const routes: RouteRecordRaw[] = [
     },
   },
   {
-    path: '/*',
+    path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: () => import("../views/NotFound.vue"),
   },

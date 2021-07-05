@@ -1,9 +1,6 @@
 <template>
-  <v-col class="js-transcripts-course-container"
-         cols="12"
-         :sm="sm"
-  >
-    <v-card class="mx-auto text-center" max-width="900">
+  <v-col cols="12" :sm="sm" >
+    <v-card class="mx-auto text-center">
       <v-card-title primary-title class="justify-center">
         {{ item.name }}
       </v-card-title>
@@ -11,7 +8,7 @@
         {{ item.tags }}
       </v-card-text>
       <v-card-actions class="justify-center">
-        <v-btn flat small color="primary" outlined :href="`/admin/courses/${item._id}`">
+        <v-btn flat small color="primary" link :to="`/fo/${item._id}`">
           Consulter
         </v-btn>
       </v-card-actions>
@@ -24,7 +21,7 @@ import api from "../services/api";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "CourseItem",
+  name: "FOCourseItem",
   props: {
     sm: {
       type: Number,
@@ -33,7 +30,6 @@ export default defineComponent({
     item: {
       type: Object,
       default: () => ({
-        _id: "",
         desc: "",
         tags: [],
         name: ""

@@ -1,30 +1,32 @@
 <template>
-  <h4>Front office - course list</h4>
-  <CourseItem
-    v-for="course in courses"
-    v-bind="{ ...course }"
-    :key="course.id"
-  >
-  </CourseItem>
+  <v-container>
+    <h3 class="fo-title">Front office - Liste des formations</h3>
+    <v-row class="mt-2">
+      <FOCourseItem
+        v-for="(item, index) in courses"
+        :key="item._id"
+        :item="item"
+        :index="index"
+      />
+    </v-row>
+  </v-container>
 </template>
 
 <script lang="ts">
-import CourseItem from '../components/CourseItem.vue'
+import FOCourseItem from '../components/FOCourseItem.vue'
 import api from '../services/api'
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: 'FOCourseList',
-  components: { CourseItem },
+  components: { FOCourseItem },
   data() {
     return {
       courses: null,
-      dates: null,
-      menu: '',
     }
   },
-  mounted() {
-    this.$data.courses = this.getCourses()
+  async mounted() {
+    this.courses = await this.getCourses()
   },
   methods: {
     async getCourses() {
@@ -42,5 +44,8 @@ export default defineComponent({
 }
 .js-courses-datepicker {
   width: 50%;
+}
+.fo-title {
+  color: white;
 }
 </style>
