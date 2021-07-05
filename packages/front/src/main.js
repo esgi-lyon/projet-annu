@@ -5,7 +5,6 @@ import router from './router'
 import store from './store'
 import { createDynamicForms } from '@asigloo/vue-dynamic-forms';
 
-
 createApp(App)
   .use(vuetify)
   .use(router)

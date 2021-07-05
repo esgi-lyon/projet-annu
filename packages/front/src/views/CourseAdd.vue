@@ -33,7 +33,7 @@ import {
 
 export default defineComponent({
   name: "CourseAdd",
-    setup() {
+  setup() {
     let errors = null
     const form = ref({
       id: 'basic-demo',
@@ -57,7 +57,7 @@ export default defineComponent({
     });
 
     function processErrrors(errs) {
-      error = errs
+      errors = errs
     }
 
     function formSubmitted(vals) {
