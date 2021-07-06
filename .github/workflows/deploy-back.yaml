@@ -38,10 +38,11 @@ jobs:
           username: ${{ secrets.USER_DEPLOY }}
           key: ${{ secrets.SSH_AUTH_KEY }}
           script: |
-            git clone git@github.com:${{ github.repository }}.git || true
+            [ ! -d "${{ github.repository }}" ] && \
+            git clone git@github.com:${{ github.repository }}.git
             cd ${{ github.event.repository.name }}
-            git pull origin ${GITHUB_BRANCH##*/} --rebase
-            chown -R $USER:$USER .
+            git fetch && git reset --hard origin/${GITHUB_BRANCH##*/}
+            sudo chown -R $USER:$USER .
             source /usr/local/lib/docker/virtualenv/bin/activate
             docker-compose \
               -f ./packages/back/docker-compose.yml \

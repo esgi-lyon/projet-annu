@@ -1,12 +1,8 @@
 {
   "name": "root",
-  "repository": {
-    "url": "https://github.com/esgi-lyon/projet-annu"
-  },
   "private": true,
   "devDependencies": {
-    "lerna": "^4.0.0",
-    "semantic-release": "^17.4.4"
+    "lerna": "^4.0.0"
   },
   "workspaces": [
     "packages/*"
@@ -19,8 +15,5 @@
     "lint": "lerna run lint",
     "bootstrap": "lerna bootstrap",
     "postupdate": "npm i && npm run lerna bootstrap && npm run build && npm run test"
-  },
-  "dependencies": {
-    "@asigloo/vue-dynamic-forms": "^3.14.0"
   }
 }
